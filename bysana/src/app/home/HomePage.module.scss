@@ -1,0 +1,90 @@
+.mainContent {
+  padding-top: 80px;
+  min-height: 100vh;
+}
+
+.aboutSection {
+  position: relative;
+  padding: 4rem 2rem 6rem;
+  text-align: center;
+  overflow: hidden;
+  border-bottom: 1px solid #333;
+}
+
+.decorativeStars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  font-size: 1.8rem;
+  color: #333;
+  opacity: 0.4;
+  filter: blur(0.5px);
+
+  &.star1 {
+    top: 15%;
+    left: 8%;
+    font-size: 1.5rem;
+  }
+
+  &.star2 {
+    top: 25%;
+    right: 12%;
+    font-size: 2rem;
+  }
+
+  &.star3 {
+    bottom: 35%;
+    left: 12%;
+    font-size: 1.2rem;
+  }
+
+  &.star4 {
+    bottom: 20%;
+    right: 15%;
+    font-size: 1.8rem;
+  }
+}
+
+.aboutTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 3rem;
+  letter-spacing: 0.15em;
+  position: relative;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutTitle {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aboutSection {
+    padding: 3rem 1rem;
+  }
+
+  .aboutTitle {
+    font-size: 2.2rem;
+    letter-spacing: 0.1em;
+	}
+}

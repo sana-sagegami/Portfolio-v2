@@ -1,0 +1,66 @@
+.detailsSection {
+  position: relative;
+  padding: 4rem 2rem;
+  background: #fffaf7;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.detailsGrid {
+  max-width: 550px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2.5rem;
+}
+
+.detailItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(51, 51, 51, 0.08);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateX(5px);
+    background: rgba(255, 255, 255, 0.3);
+    margin: 0 -1rem;
+    padding: 1.5rem 1rem;
+    border-radius: 10px;
+  }
+}
+
+.detailLabel {
+  font-weight: 600;
+  color: #333;
+  min-width: 100px;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.detailValue {
+  color: #555;
+  text-align: right;
+  font-weight: 400;
+  font-size: 1rem;
+  letter-spacing: 0.3px;
+}
+
+@media (max-width: 768px) {
+  .detailsGrid {
+    padding: 0 1rem;
+  }
+
+  .detailItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 1.2rem 0;
+  }
+
+  .detailValue {
+    text-align: left;
+  }
+}
