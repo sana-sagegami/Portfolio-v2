@@ -20,6 +20,10 @@ const Skills: React.FC<SkillsProps> = ({ skills }) => {
 
       <div className={styles.skillsContainer}>
         <div className={styles.skillsGrid}>
+          <span className={styles.borderTop} />
+          <span className={styles.borderRight} />
+          <span className={styles.borderBottom} />
+          <span className={styles.borderLeft} />
           {skills.map((skill, i) => (
             <div key={i} className={styles.skillItem}>
               {skill.image ? (

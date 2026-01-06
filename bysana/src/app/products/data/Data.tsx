@@ -51,7 +51,7 @@ const productsData = [
     title: "ムービーフェス",
     description:
       "映画祭をモチーフに、映像やアイテム、カメラマンなどの演出要素を操作しながらフィットネス×エンタメ×インターフェース...",
-    icon: "/assets/products/moviefes.svg",
+    icon: "/assets/products/moveifes.svg",
     awards: [
       "東京ゲームショウ2024",
       "ゲームマーケット2024",
@@ -82,10 +82,10 @@ const productDetailsData: Record<string, ProductDetailData> = {
       </>
     ),
     role: "フロントエンド/デザイン",
-    githubUrl: "https://github.com/yourusername/yohaku",
+    githubUrl: "https://github.com/yohaku-space",
     techStack: [
-      ["React", "Next.js", "jotai"],
-      ["webSocket", "firebase", "firestore", "authentication"],
+      ["React", "Next.js", "jotai", "tauri"],
+      ["GO", "webSocket", "AWS"],
     ],
     screens: [
       "/assets/yohaku/1.png",
@@ -108,7 +108,7 @@ const productDetailsData: Record<string, ProductDetailData> = {
       </>
     ),
     role: "フロントエンド/デザイン",
-    githubUrl: "https://github.com/yourusername/librarium",
+    githubUrl: "https://github.com/nrak126/librarium",
     techStack: [
       ["React", "Next.js", "supabase"],
       ["api routes", "Figma"],
@@ -123,7 +123,7 @@ const productDetailsData: Record<string, ProductDetailData> = {
   moviefes: {
     id: "moviefes",
     logoText: "ムービーフェス",
-    logoSvg: "/assets/products/moviefes.svg",
+    logoSvg: "/assets/products/moveifes.svg",
     summary: (
       <>
         映画祭をモチーフに、映像やアイテム、カメラマンなどの演出要素を操作しながら
@@ -134,10 +134,10 @@ const productDetailsData: Record<string, ProductDetailData> = {
     role: "デザイン/実装",
     techStack: [["OpenGL", "C++"]],
     screens: [
-      "/assets/moviefes/1.png",
-      "/assets/moviefes/2.png",
-      "/assets/moviefes/3.png",
-      "/assets/moviefes/4.png",
+      "/assets/movie/screen1.png",
+      "/assets/movie/screen2.png",
+      "/assets/movie/screen3.png",
+      "/assets/movie/screen4.png",
     ],
   },
 };
