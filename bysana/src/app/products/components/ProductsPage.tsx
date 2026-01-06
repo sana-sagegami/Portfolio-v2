@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./ProductsPage.module.scss";
-import  ProductCard, { Product } from "./ProductCard";
+import  ProductCard from "./ProductCard";
+import { Product } from "../data/Data";
 
 interface ProductsPageProps {
   products: Product[];

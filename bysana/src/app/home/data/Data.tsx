@@ -2,7 +2,7 @@
 export const profileData = {
   nameJp: "提髪 沙奈",
   nameEn: "Sagegami Sana",
-  profileImage: "/image/profile.png", // 実際の画像パス
+  profileImage: "/assets/profile.png", // 実際の画像パス
 };
 
 export const detailsData = [
@@ -13,13 +13,13 @@ export const detailsData = [
 ];
 
 export const skillsData = [
-  { name: "HTML5", icon: "🌐", image: "/image/skills/HTML5.svg" },
-  { name: "C++", icon: "⚡", image: "/image/skills/c++.png" },
-  { name: "React", icon: "⚛️", image: "/image/skills/react-logo.svg" },
-  { name: "Next.js", icon: "▲", image: "/image/skills/nextjs.jpeg" },
-  { name: "JavaScript", icon: "📜", image: "/image/skills/js.png" },
-  { name: "TypeScript", icon: "📘", image: "/image/skills/ts.jpeg" },
-  { name: "Swift", icon: "🍎", image: "/image/skills/swift.png" },
-  { name: "Figma", icon: "🎨", image: "/image/skills/figma.png" },
+  { name: "HTML5", icon: "🌐", image: "/assets/skills/HTML5.svg" },
+  { name: "C++", icon: "⚡", image: "/assets/skills/c++.png" },
+  { name: "React", icon: "⚛️", image: "/assets/skills/react-logo.svg" },
+  { name: "Next.js", icon: "▲", image: "/assets/skills/nextjs.jpeg" },
+  { name: "JavaScript", icon: "📜", image: "/assets/skills/js.png" },
+  { name: "TypeScript", icon: "📘", image: "/assets/skills/ts.jpeg" },
+  { name: "Swift", icon: "🍎", image: "/assets/skills/swift.png" },
+  { name: "Figma", icon: "🎨", image: "/assets/skills/figma.png" },
 ];
 

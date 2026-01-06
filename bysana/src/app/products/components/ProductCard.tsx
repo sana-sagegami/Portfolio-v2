@@ -1,16 +1,8 @@
 import React from "react";
-import styles from './ProductCard.module.scss';
+import styles from "./ProductCard.module.scss";
+import { Product } from "../data/Data";
 
 
-export interface Product {
-  id: string;
-  title: string;
-  titleYo?: string; // Yo haku用
-  titleHaku?: string; // Yo haku用
-  description: string;
-  icon?: string;
-  githubUrl?: string;
-}
 
 interface ProductCardProps {
   product: Product;
@@ -37,7 +29,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
       {/* コンテンツ */}
       <div className={styles.productContent}>
         {/* タイトル */}
-        <h3 className={styles.productTitle}>
+        <h3
+          className={styles.productTitle}
+          style={
+            {
+              "--hover-color": product.color || "#ef9995",
+            } as React.CSSProperties
+          }
+        >
           {product.titleYo && product.titleHaku ? (
             <>
               <span className={styles.productTitleYo}>{product.titleYo}</span>{" "}
@@ -53,18 +52,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {/* 説明文 */}
         <p className={styles.productDescription}>{product.description}</p>
 
-        {/* リンクとボタン */}
+        {/* 受賞 */}
+        {product.awards && product.awards.length > 0 && (
+          <div className={styles.productAwards}>
+            {product.awards.map((award, index) => (
+              <span key={index} className={styles.awardBadge}>
+                #{award}
+              </span>
+            ))}
+          </div>
+        )}
+
+        {/* ボタン */}
         <div className={styles.productLinks}>
-          {product.githubUrl && (
-            <a
-              href={product.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.githubLink}
-            >
-              github
-            </a>
-          )}
           <button
             className={styles.detailButton}
             onClick={() => onDetailClick(product.id)}
