@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { ProductsPage } from "./components/ProductsPage";
-import { Product } from "./data/Data";
-
+import { Product } from "./types/Data";
 
 interface Props {
   products: Product[];

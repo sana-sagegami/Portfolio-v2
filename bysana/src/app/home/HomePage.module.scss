@@ -1,11 +1,11 @@
 .mainContent {
-  padding-top: 80px;
   min-height: 100vh;
 }
 
 .aboutSection {
   position: relative;
-  padding: 4rem 2rem 6rem;
+  padding: 4rem 2rem 3rem;
+  background: #fffaf7;
   text-align: center;
   overflow: hidden;
   border-bottom: 1px solid #333;
@@ -69,6 +69,43 @@
   span {
     display: inline-block;
     transition: transform 0.3s ease;
+  }
+}
+
+.ProductsBtnWrap {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.ProductsBtn {
+  color: #d4a574;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #c49660;
+    transition: width 0.3s ease;
+  }
+
+  &:hover {
+    color: #c49660;
+    gap: 1rem;
+
+    &::after {
+      width: 100%;
+    }
   }
 }
 

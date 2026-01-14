@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "./ProductsPage.module.scss";
-import  ProductCard from "./ProductCard";
-import { Product } from "../data/Data";
+import ProductCard from "./ProductCard";
+import { Product } from "../types/domin/Product";
 
 interface ProductsPageProps {
   products: Product[];
   onSelectProduct: (productId: string) => void;
 }
-
 
 // Products一覧ページ
 export const ProductsPage: React.FC<ProductsPageProps> = ({
@@ -18,7 +17,6 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     <main className={styles.productsMain}>
       {/* ヘッダー */}
       <div className={styles.productsHeader}>
-        <span className={styles.productsStar}>✦</span>
         <h1 className={styles.productsTitle}>Products</h1>
       </div>
 
@@ -35,4 +33,3 @@ export const ProductsPage: React.FC<ProductsPageProps> = ({
     </main>
   );
 };
-

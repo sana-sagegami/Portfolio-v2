@@ -2,8 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { ProductDetail } from "../components/ProductDetails";
-import { ProductDetailData } from "../data/Data";
-
+import { ProductDetailData } from "../types/domin/ProductDetailData";
 
 export default function ProductDetailClient({
   product,

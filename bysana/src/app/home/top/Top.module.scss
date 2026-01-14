@@ -16,33 +16,50 @@
 
 .star {
   position: absolute;
-  font-size: 1.8rem;
+  font-size: 3rem;
   color: #333;
-  opacity: 0.4;
+  opacity: 0.6;
   filter: blur(0.5px);
+  animation: twinkle 3s ease-in-out infinite;
+  z-index: 999;
 
   &.star1 {
     top: 15%;
     left: 8%;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    animation-delay: 0s;
   }
 
   &.star2 {
     top: 25%;
     right: 12%;
-    font-size: 2rem;
+    font-size: 3.5rem;
+    animation-delay: 0.5s;
   }
 
   &.star3 {
     bottom: 35%;
     left: 12%;
-    font-size: 1.2rem;
+    font-size: 2rem;
+    animation-delay: 1s;
   }
 
   &.star4 {
     bottom: 20%;
     right: 15%;
-    font-size: 1.8rem;
+    font-size: 2rem;
+    animation-delay: 1.5s;
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
   }
 }
 
@@ -68,7 +85,7 @@
 
 .profileTopBackground {
   position: absolute;
-  top: 0;
+  top: 15;
   right: 0;
   width: 110%;
   height: 100%;
@@ -76,9 +93,9 @@
   background-image: url(/assets/design/blur.png);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center top;
+  background-position: center -50px;
   z-index: 1;
-  opacity: 0.5;
+  opacity: 0.9;
 }
 
 .profileBottomBackground {
@@ -91,10 +108,94 @@
   z-index: 0;
 }
 
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.profileImageBg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.profileImageWrapper {
+  position: relative;
+  width: 380px;
+  height: 480px;
+  background-image: url("/assets/design/Ellipse.png");
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profileImage {
+  width: 85%;
+  height: 85%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  position: relative;
+  z-index: 2;
+}
+
+.profilePlaceholder {
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+.profileInfo {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.profileNameJp {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.1em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.profileNameEn {
+  font-family: "Playfair Display", serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #666;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
+
 // Responsive
 @media (max-width: 768px) {
   .aboutTitle {
     font-size: 3rem;
+  }
+
+  .profileImageWrapper {
+    width: 260px;
+    height: 320px;
   }
 }
 
@@ -106,5 +207,18 @@
   .aboutTitle {
     font-size: 2.2rem;
     letter-spacing: 0.1em;
+  }
+
+  .profileImageWrapper {
+    width: 220px;
+    height: 280px;
+  }
+
+  .profileNameJp {
+    font-size: 1.5rem;
+  }
+
+  .profileNameEn {
+    font-size: 1.1rem;
   }
 }

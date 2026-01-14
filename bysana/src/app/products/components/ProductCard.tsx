@@ -1,8 +1,6 @@
 import React from "react";
 import styles from "./ProductCard.module.scss";
-import { Product } from "../data/Data";
-
-
+import { Product } from "../types/domin/Product";
 
 interface ProductCardProps {
   product: Product;

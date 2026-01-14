@@ -1,29 +1,4 @@
-import { JSX } from "react";
-
-export interface Product {
-  id: string;
-  title: string;
-  titleYo?: string; // Yo haku用
-  titleHaku?: string; // Yo haku用
-  description: string;
-  icon?: string;
-  awards?: string[];
-  color?: string;
-}
-
-// ProductDetail型定義
-export interface ProductDetailData {
-  id: string;
-  logoText: string;
-  logoYo?: string;
-  logoHaku?: string;
-  logoSvg?: string;
-  summary?: JSX.Element;
-  role?: string;
-  githubUrl?: string;
-  techStack: string[][];
-  screens: string[];
-}
+import { ProductDetailData } from "./domin/ProductDetailData";
 
 const productsData = [
   {
@@ -58,7 +33,21 @@ const productsData = [
       "eフェスNEXT2024",
       "bitSummit2025",
     ],
-    color: "#ef4444",
+    color: "#c73434ff",
+  },
+  {
+    id: "sleepGuard",
+    title: "Sleep-Guard",
+    description:
+      "映画祭をモチーフに、映像やアイテム、カメラマンなどの演出要素を操作しながらフィットネス×エンタメ×インターフェース...",
+    icon: "/assets/products/moveifes.svg",
+    awards: [
+      "東京ゲームショウ2024",
+      "ゲームマーケット2024",
+      "eフェスNEXT2024",
+      "bitSummit2025",
+    ],
+    color: "#c73434ff",
   },
 ];
 
@@ -81,11 +70,11 @@ const productDetailsData: Record<string, ProductDetailData> = {
         カレンダー連携やチャット機能などがあります。
       </>
     ),
-    role: "フロントエンド/デザイン",
+    role: "フロントエンド",
     githubUrl: "https://github.com/yohaku-space",
     techStack: [
       ["React", "Next.js", "jotai", "tauri"],
-      ["GO", "webSocket", "AWS"],
+      ["GO", "webSocket", "AWS", "Figma"],
     ],
     screens: [
       "/assets/yohaku/1.png",
@@ -131,7 +120,6 @@ const productDetailsData: Record<string, ProductDetailData> = {
         フィットネス×エンタメ×インターフェースの新しい体験を提供するアプリ
       </>
     ),
-    role: "デザイン/実装",
     techStack: [["OpenGL", "C++"]],
     screens: [
       "/assets/movie/screen1.png",
@@ -140,5 +128,24 @@ const productDetailsData: Record<string, ProductDetailData> = {
       "/assets/movie/screen4.png",
     ],
   },
-};
+  sleepGuard: {
+    id: "sleepGuard",
+    logoText: "Sleep-Guard",
+    logoSvg: "/assets/products/moveifes.svg",
+    summary: (
+      <>
+        映画祭をモチーフに、映像やアイテム、カメラマンなどの演出要素を操作しながら
+        <br />
+        フィットネス×エンタメ×インターフェースの新しい体験を提供するアプリ
+      </>
+    ),
+    techStack: [["OpenGL", "C++"]],
+    screens: [
+      "/assets/movie/screen1.png",
+      "/assets/movie/screen2.png",
+      "/assets/movie/screen3.png",
+      "/assets/movie/screen4.png",
+    ],
+  },
+}
 export { productsData, productDetailsData };

@@ -1,5 +1,5 @@
-import { ProductDetailData } from "../data/Data";
-import styles from "./ProductsPage.module.scss";
+import { ProductDetailData } from "../types/domin/ProductDetailData";
+import styles from "./ProductDetails.module.scss";
 
 interface ProductDetailProps {
   product: ProductDetailData;
@@ -46,22 +46,36 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
         <p className={styles.summaryText}>{product.summary}</p>
       </section>
 
+      {/* Role Section */}
+      {product.role && (
+        <section className={styles.summarySection}>
+          <h2 className={styles.sectionTitle}>
+            <span>担当箇所</span>
+          </h2>
+          <p className={styles.summaryText}>{product.role}</p>
+        </section>
+      )}
+
       {/* Tech Stack Section */}
       <section className={styles.stackSection}>
-        <h2 className={styles.stackTitle}>
-          <span className={styles.star}>✦</span>
-          <span className={styles.stackText}>技術スタック</span>
-          <span className={styles.star}>✦</span>
+        <h2 className={styles.sectionTitle}>
+          <span>技術スタック</span>
         </h2>
         <div className={styles.stackList}>
-          {product.techStack.map((stack, i) => (
-            <ul key={i}>
-              {stack.map((tech, j) => (
-                <li key={j}>{tech}</li>
-              ))}
-            </ul>
-          ))}
+          <ul>
+            {product.techStack.flat().map((tech, j) => (
+              <li key={j}>{tech}</li>
+            ))}
+          </ul>
         </div>
+      </section>
+
+      {/* KeyPoints Section */}
+      <section className={styles.summarySection}>
+        <h2 className={styles.sectionTitle}>
+          <span>工夫点</span>
+        </h2>
+        <p className={styles.summaryText}>{product.keyPoints}</p>
       </section>
 
       {/* Screens Section */}
@@ -69,7 +83,11 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
         <h2 className={styles.sectionTitle}>
           <span>画面</span>
         </h2>
-        <div className={styles.screensGrid}>
+        <div
+          className={`${styles.screensGrid} ${
+            isYohaku || product.id === "librarium" ? styles.verticalLayout : ""
+          }`}
+        >
           {product.screens.map((screen, i) => (
             <div key={i} className={styles.screenItem}>
               <img src={screen} alt={`${product.logoText} screen ${i + 1}`} />

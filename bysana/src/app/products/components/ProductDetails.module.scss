@@ -1,0 +1,266 @@
+.detailMain {
+  padding-top: 80px;
+  min-height: 100vh;
+  background: #fffaf7;
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+.heroSection {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.logoTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+
+  .logoYo {
+    color: #22c55e;
+  }
+
+  .logoHaku {
+    color: #333;
+  }
+}
+
+.logoImageWrap {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+
+  .logoImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+  }
+
+  .logoGlow {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(
+      circle,
+      rgba(248, 182, 182, 0.5) 0%,
+      rgba(255, 247, 243, 0.3) 80%
+    );
+    filter: blur(32px);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+}
+
+.summarySection {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  border-bottom: 2px solid #333;
+  padding-bottom: 0.1rem;
+
+  span {
+    display: inline-block;
+  }
+}
+
+.summaryText {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  text-align: center;
+
+  .highlight {
+    color: #d4a574;
+    font-weight: 600;
+  }
+}
+
+.stackSection {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stackTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  color: #333;
+
+  .star {
+    font-size: 1.5rem;
+    margin: 0 1rem;
+  }
+
+  .stackText {
+    font-family: "Playfair Display", serif;
+  }
+}
+
+.stackList {
+  max-width: 600px;
+  margin: 0 auto;
+
+  ul {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    padding: 2rem 3rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    justify-content: center;
+
+    li {
+      color: #fff;
+      font-size: 1.1rem;
+			font-weight: 600;
+      padding: 0.5rem 1rem;
+      display: inline-flex;
+      align-items: center;
+      background: #efaba8;
+      border-radius: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+  }
+}
+
+.screensSection {
+  padding: 3rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.screensGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+
+  &.verticalLayout {
+    .screenItem {
+      aspect-ratio: 9 / 16;
+    }
+  }
+
+  &:not(.verticalLayout) {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.screenItem {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 40px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 1rem;
+  }
+}
+
+.backBtnWrap {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.backBtn {
+  color: #d4a574;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #c49660;
+    transition: width 0.3s ease;
+  }
+
+  &:hover {
+    color: #c49660;
+    gap: 1rem;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .logoTitle {
+    font-size: 2.5rem;
+  }
+
+  .stackList {
+    grid-template-columns: 1fr;
+  }
+
+  .screensGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .summaryText {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoTitle {
+    font-size: 2rem;
+  }
+}
