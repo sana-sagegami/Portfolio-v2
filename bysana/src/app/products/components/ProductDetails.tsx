@@ -83,17 +83,29 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
         <h2 className={styles.sectionTitle}>
           <span>画面</span>
         </h2>
-        <div
-          className={`${styles.screensGrid} ${
-            isYohaku || product.id === "librarium" ? styles.verticalLayout : ""
-          }`}
-        >
-          {product.screens.map((screen, i) => (
-            <div key={i} className={styles.screenItem}>
-              <img src={screen} alt={`${product.logoText} screen ${i + 1}`} />
+        {product.screens.map((screenGroup, groupIndex) => (
+          <div key={groupIndex} className={styles.screenGroup}>
+            <h3 className={styles.screenGroupTitle}>{screenGroup.title}</h3>
+            <div
+              className={`${styles.screensGrid} ${
+                isYohaku ||
+                product.id === "librarium" ||
+                product.id === "sleepGuard"
+                  ? styles.verticalLayout
+                  : ""
+              } ${screenGroup.images.length === 2 ? styles.twoColumns : ""}`}
+            >
+              {screenGroup.images.map((screen, i) => (
+                <div key={i} className={styles.screenItem}>
+                  <img
+                    src={screen}
+                    alt={`${product.logoText} ${screenGroup.title} ${i + 1}`}
+                  />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </section>
 
       {/* Back Button */}

@@ -82,6 +82,7 @@
   font-size: 0.95rem;
   margin: 0;
   flex: 1;
+  white-space: pre-line;
 }
 
 .productLinks {
@@ -97,7 +98,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin: 1rem 0;
+  margin: 1rem 0 1rem 0;
+  align-items: flex-start;
+  min-height: 4rem;
 }
 
 .awardBadge {
