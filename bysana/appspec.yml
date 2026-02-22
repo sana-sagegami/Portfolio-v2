@@ -1,0 +1,10 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/sana/bysana
+hooks:
+  ApplicationStart:
+    - location: scripts/start_docker.sh
+      timeout: 600
+      runas: sana
