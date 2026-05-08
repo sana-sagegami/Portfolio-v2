@@ -110,16 +110,13 @@ const Top: React.FC<TopProps> = ({ nameJp, nameEn, profileImage }) => {
           ref={profileRef}
         >
           <h1 className={styles.aboutTitle} aria-hidden>
-            {["A", "B", "O", "U", "T", "M", "E"].map((letter, i) => (
-              <span
-                key={i}
-                className={
-                  letter === " " ? styles.aboutSpacer : styles.aboutLetter
-                }
-              >
-                {letter}
-              </span>
-            ))}
+            <Image
+              src="/assets/design/ABOUTME.svg"
+              width={35}
+              height={30}
+              className={`${styles.star} ${styles.star4}`}
+              alt=""
+            />
           </h1>
           <div className={styles.profileImageWrapper}>
             {profileImage ? (
@@ -141,8 +138,6 @@ const Top: React.FC<TopProps> = ({ nameJp, nameEn, profileImage }) => {
           </div>
         </div>
       </div>
-
-      {/* プロフィール画像とテキスト */}
     </div>
   );
 };

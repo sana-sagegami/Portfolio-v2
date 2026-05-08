@@ -45,6 +45,15 @@ const productsData = [
     awards: ["個人制作", "デジタルコンテンツ演習"],
     color: "#FFEDB1",
   },
+  {
+    id: "alive",
+    title: "alive",
+    description:
+      "Oura Ringの心拍データをリアルタイムで表示する、生存確認サイト",
+    icon: "/assets/products/alive.png",
+    awards: ["個人制作"],
+    color: "#E24B4A",
+  },
 ];
 
 const productDetailsData: Record<string, ProductDetailData> = {
@@ -78,7 +87,7 @@ const productDetailsData: Record<string, ProductDetailData> = {
       </>
     ),
     role: "フロントエンド",
-    githubUrl: "https://github.com/yohaku-space",
+    url: "https://github.com/yohaku-space",
     techStack: [
       ["React", "Next.js", "jotai", "tauri"],
       ["GO", "webSocket", "AWS", "Figma"],
@@ -120,7 +129,7 @@ const productDetailsData: Record<string, ProductDetailData> = {
       </>
     ),
     role: "フロントエンド/デザイン",
-    githubUrl: "https://github.com/nrak126/librarium",
+    url: "https://github.com/nrak126/librarium",
     techStack: [
       ["React", "Next.js", "supabase"],
       ["api routes", "Figma"],
@@ -240,5 +249,45 @@ const productDetailsData: Record<string, ProductDetailData> = {
       },
     ],
   },
+  alive: {
+    id: "alive",
+    logoText: "alive",
+    logoSvg: "/assets/products/alive.png",
+    summary: (
+      <>
+        Oura Ring APIと連携し、装着中のリングから取得した
+        <br />
+        リアルタイムの心拍数データをWebサイトに表示します。
+        <br />
+        心電図アニメーションとともにBPMを可視化することで、
+        <br />
+        今、生きていることをひと目で伝えます。
+        <br />
+        バックエンドはCloudflare Workersで構成し、ホストしています。
+      </>
+    ),
+    url: "https://alive.bysana.me",
+    techStack: [
+      ["React", "Vite", "SCSS Modules"],
+      ["Cloudflare Workers", "Cloudflare Pages", "Oura Ring API"],
+    ],
+    keyPoints: (
+      <>
+        Oura Ringが計測した心拍数データをAPIで直接取得し、
+        <br />
+        反映される仕組みを実装しました。
+        <br />
+        心拍アニメーションはCSS animationのみで実装し、
+        <br />
+        軽量かつ視覚的に伝えるデザインにしています。
+      </>
+    ),
+    screens: [
+      {
+        title: "",
+        images: ["/assets/alive/1.png"],
+      },
+    ],
+  },
 };
-export { productsData, productDetailsData };
+export { productDetailsData, productsData };

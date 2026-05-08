@@ -36,18 +36,26 @@ export default function HomePage(): JSX.Element {
         <Details details={detailsData} />
         <Skills skills={skillsData} />
         <div className={styles.productsPreviewSection}>
-          <div className={styles.productsPreviewGrid}>
-            {previewProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onDetailClick={handleProductClick}
-              />
-            ))}
+          <div className={styles.productsPreviewFrame}>
+            <div className={styles.productsFrameHeader}>
+              <span className={styles.productsFrameLabel}>Products</span>
+            </div>
+            <div className={styles.productsPreviewGrid}>
+              {previewProducts.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onDetailClick={handleProductClick}
+                />
+              ))}
+            </div>
+            <div className={styles.productsFrameFooter}>
+              <button type="button" className={styles.ProductsBtn} onClick={handleAllProducts}>
+                <span>Products一覧を見る</span>
+                <span className={styles.ProductsBtnArrow}>→</span>
+              </button>
+            </div>
           </div>
-          <button className={styles.ProductsBtn} onClick={handleAllProducts}>
-            Products一覧へ→
-          </button>
         </div>
       </section>
     </main>

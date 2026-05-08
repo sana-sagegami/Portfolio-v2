@@ -1,91 +1,42 @@
 .skillsSection {
   background: #fffaf7;
-  padding: 5rem 2rem;
+  padding: 2rem 2rem 3rem;
   text-align: center;
   position: relative;
-  overflow: hidden;
 }
 
-.skillsTitle {
-  font-family: "Playfair Display", serif;
-  font-size: 3.5rem;
-  font-weight: 400;
-  color: #888;
-  margin-bottom: 4rem;
-  letter-spacing: 0.05em;
-  position: relative;
-  z-index: 2;
-}
-
-.logoGlow {
-  position: absolute;
-  left: 50%;
-  top: 20%;
-  width: 400px;
-  height: 250px;
-  background: radial-gradient(
-    circle,
-    rgba(248, 182, 182, 0.4) 0%,
-    transparent 70%
-  );
-  filter: blur(50px);
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  opacity: 0.6;
-}
-
-.skillsContainer {
+.skillsFrame {
   max-width: 920px;
   margin: 0 auto;
+  border: 1.5px solid #d4a574;
+  border-radius: 4px;
+  padding: 0 2rem 2rem;
+  background: white;
+}
+
+.skillsFrameHeader {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.75rem;
   position: relative;
-  z-index: 1;
+  top: -0.85rem;
+}
+
+.skillsFrameLabel {
+  background: #fffaf7;
+  padding: 0 1rem;
+  color: #d4a574;
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 .skillsGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 0.5rem;
-  background: white;
-  padding: 2rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-  position: relative;
-}
-
-.borderTop,
-.borderRight,
-.borderBottom,
-.borderLeft {
-  position: absolute;
-  background-color: #333;
-  z-index: 10;
-}
-
-.borderTop {
-  height: 1px;
-  top: 0;
-  left: 0;
-  width: calc(100% + 10rem);
-}
-
-.borderRight {
-  width: 1px;
-  bottom: 0;
-  right: 0;
-  height: calc(100% + 3rem);
-}
-
-.borderBottom {
-  height: 1px;
-  bottom: 0;
-  right: 0;
-  width: calc(100% + 10rem);
-}
-
-.borderLeft {
-  width: 1px;
-  top: 0;
-  left: 0;
-  height: calc(100% + 5rem);
 }
 
 .skillItem {
@@ -104,44 +55,40 @@
 
 @media (max-width: 768px) {
   .skillsSection {
-    padding: 3.5rem 1.5rem;
+    padding: 1.5rem 1.5rem 2.5rem;
+  }
+
+  .skillsFrame {
+    padding: 0 1.25rem 1.5rem;
   }
 
   .skillsGrid {
     grid-template-columns: repeat(4, 1fr);
     gap: 0.5rem;
-    padding: 1.5rem;
   }
 
   .skillIcon {
     width: 64px;
     height: 64px;
   }
-
-  .skillsTitle {
-    font-size: 2.5rem;
-    margin-bottom: 2.5rem;
-  }
 }
 
 @media (max-width: 480px) {
   .skillsSection {
-    padding: 3rem 1rem;
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .skillsFrame {
+    padding: 0 1rem 1.25rem;
   }
 
   .skillsGrid {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
-    padding: 1.25rem;
   }
 
   .skillIcon {
     width: 56px;
     height: 56px;
-  }
-
-  .skillsTitle {
-    font-size: 2rem;
-    margin-bottom: 2rem;
   }
 }

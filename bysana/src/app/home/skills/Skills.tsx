@@ -15,15 +15,11 @@ interface SkillsProps {
 const Skills: React.FC<SkillsProps> = ({ skills }) => {
   return (
     <section className={styles.skillsSection}>
-      <h2 className={styles.skillsTitle}>Skills</h2>
-      <div className={styles.logoGlow} />
-
-      <div className={styles.skillsContainer}>
+      <div className={styles.skillsFrame}>
+        <div className={styles.skillsFrameHeader}>
+          <span className={styles.skillsFrameLabel}>Skills</span>
+        </div>
         <div className={styles.skillsGrid}>
-          <span className={styles.borderTop} />
-          <span className={styles.borderRight} />
-          <span className={styles.borderBottom} />
-          <span className={styles.borderLeft} />
           {skills.map((skill, i) => (
             <div key={i} className={styles.skillItem}>
               {skill.image ? (

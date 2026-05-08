@@ -13,7 +13,7 @@ export interface ProductDetailData {
   summary?: JSX.Element;
   role?: string;
   keyPoints?: JSX.Element;
-  githubUrl?: string;
+  url?: string;
   techStack: string[][];
   screens: ScreenGroup[];
 }

@@ -93,7 +93,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 product.id === "sleepGuard"
                   ? styles.verticalLayout
                   : ""
-              } ${screenGroup.images.length === 2 ? styles.twoColumns : ""}`}
+              } ${screenGroup.images.length === 2 ? styles.twoColumns : ""} ${screenGroup.images.length === 1 ? styles.singleImage : ""}`}
             >
               {screenGroup.images.map((screen, i) => (
                 <div key={i} className={styles.screenItem}>

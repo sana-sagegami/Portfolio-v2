@@ -77,10 +77,33 @@
   width: 100%;
   max-width: 860px;
   margin: 0 auto;
+}
+
+.productsPreviewFrame {
+  border: 1.5px solid #d4a574;
+  border-radius: 4px;
+  padding: 0 2rem 2rem;
+  position: relative;
+  background: rgba(255, 250, 247, 0.6);
+}
+
+.productsFrameHeader {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 1.75rem;
+  position: relative;
+  top: -0.85rem;
+}
+
+.productsFrameLabel {
+  background: #fffaf7;
+  padding: 0 1rem;
+  color: #d4a574;
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 .productsPreviewGrid {
@@ -90,39 +113,42 @@
   width: 100%;
 }
 
+.productsFrameFooter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed rgba(212, 165, 116, 0.4);
+}
+
 .ProductsBtn {
   color: #d4a574;
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: 500;
-  text-decoration: none;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  position: relative;
   background: none;
-  border: none;
+  border: 1px solid #d4a574;
+  border-radius: 2px;
   cursor: pointer;
   font-family: inherit;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #c49660;
-    transition: width 0.3s ease;
-  }
+  padding: 0.5rem 1.25rem;
+  letter-spacing: 0.05em;
 
   &:hover {
-    color: #c49660;
-    gap: 1rem;
+    color: #fffaf7;
+    background: #d4a574;
+    gap: 0.8rem;
+  }
+}
 
-    &::after {
-      width: 100%;
-    }
+.ProductsBtnArrow {
+  transition: transform 0.3s ease;
+
+  .ProductsBtn:hover & {
+    transform: translateX(3px);
   }
 }
 
@@ -133,7 +159,10 @@
 
   .productsPreviewSection {
     padding: 2rem 0 1.5rem;
-    gap: 1.5rem;
+  }
+
+  .productsPreviewFrame {
+    padding: 0 1.25rem 1.5rem;
   }
 
   .productsPreviewGrid {
@@ -160,11 +189,13 @@
 
   .productsPreviewSection {
     padding: 1.5rem 0 1rem;
-    gap: 1.25rem;
+  }
+
+  .productsPreviewFrame {
+    padding: 0 1rem 1.25rem;
   }
 
   .ProductsBtn {
-    font-size: 1.2rem;
     min-height: 44px;
   }
 }

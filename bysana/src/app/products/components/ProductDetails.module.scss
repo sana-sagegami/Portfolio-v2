@@ -196,6 +196,18 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: 1fr;
   }
+
+  &.singleImage {
+    grid-template-columns: 1fr;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .screenItem img {
+      object-fit: contain;
+      height: auto;
+    }
+  }
 }
 
 .screenItem {
