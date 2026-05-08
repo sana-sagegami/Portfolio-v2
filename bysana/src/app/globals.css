@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background: #fffaf7;
+}
+
 body {
   font-family: "Noto Sans JP", sans-serif;
   background: #fffaf7;
@@ -30,12 +34,12 @@ body {
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #fffaf7;
   }
 }
 
 body {
-  background: var(--background);
+  background: #fffaf7;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }

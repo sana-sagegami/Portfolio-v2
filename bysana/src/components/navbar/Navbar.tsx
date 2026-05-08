@@ -18,6 +18,7 @@ export default function Navbar(): JSX.Element {
       <div className={styles.navContainer}>
         <div className={styles.navLinks}>
           <button
+            type="button"
             onClick={() => handleNavigate("/")}
             className={`${styles.navLink} ${
               pathname === "/" ? styles.active : ""
@@ -27,12 +28,23 @@ export default function Navbar(): JSX.Element {
           </button>
           <span className={styles.navSeparator}>/</span>
           <button
+            type="button"
             onClick={() => handleNavigate("/products")}
             className={`${styles.navLink} ${
               pathname?.startsWith("/products") ? styles.active : ""
             }`}
           >
             Products
+          </button>
+          <span className={styles.navSeparator}>/</span>
+          <button
+            type="button"
+            onClick={() => handleNavigate("/blog")}
+            className={`${styles.navLink} ${
+              pathname?.startsWith("/blog") ? styles.active : ""
+            }`}
+          >
+            Blog
           </button>
         </div>
       </div>

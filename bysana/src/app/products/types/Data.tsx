@@ -30,8 +30,8 @@ const productsData = [
     icon: "/assets/products/moveifes.svg",
     awards: [
       "東京ゲームショウ2024",
-      "ゲームマーケット2024",
       "eフェスNEXT2024",
+      "ゲームマーケット2024",
       "bitSummit2025",
     ],
     color: "#c73434ff",

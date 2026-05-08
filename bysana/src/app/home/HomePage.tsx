@@ -7,14 +7,24 @@ import Skills from "./skills/Skills";
 import { detailsData, profileData, skillsData } from "./data/Data";
 import Top from "./top/Top";
 import { useRouter } from "next/navigation";
+import ProductCard from "@/src/app/products/components/ProductCard";
+import { productsData } from "@/src/app/products/types/Data";
 
 export default function HomePage(): JSX.Element {
   const router = useRouter();
 
-  const handlePd = () => {
+  const handleProductClick = (productId: string) => {
+    router.push(`/products/${productId}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleAllProducts = () => {
     router.push("/products");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  const previewProducts = productsData.slice(0, 2);
+
   return (
     <main className={styles.mainContent}>
       <section className={styles.aboutSection}>
@@ -25,9 +35,18 @@ export default function HomePage(): JSX.Element {
         />
         <Details details={detailsData} />
         <Skills skills={skillsData} />
-        <div className={styles.ProductsBtnWrap}>
-          <button className={styles.ProductsBtn} onClick={handlePd}>
-            Productsページへはこちら→
+        <div className={styles.productsPreviewSection}>
+          <div className={styles.productsPreviewGrid}>
+            {previewProducts.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onDetailClick={handleProductClick}
+              />
+            ))}
+          </div>
+          <button className={styles.ProductsBtn} onClick={handleAllProducts}>
+            Products一覧へ→
           </button>
         </div>
       </section>

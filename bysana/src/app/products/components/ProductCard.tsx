@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./ProductCard.module.scss";
 import { Product } from "../types/domin/Product";
 
@@ -12,11 +13,22 @@ const ProductCard: React.FC<ProductCardProps> = ({
   onDetailClick,
 }) => {
   return (
-    <div className={styles.productCard}>
+    <button
+      type="button"
+      className={styles.productCard}
+      onClick={() => onDetailClick(product.id)}
+      aria-label={`${product.title}の詳細を見る`}
+      data-hover-color={product.color || "#ef9995"}
+    >
       {/* アイコン */}
       <div className={styles.productIcon}>
         {product.icon ? (
-          <img src={product.icon} alt={product.title} />
+          <Image
+            src={product.icon}
+            alt={product.title}
+            width={100}
+            height={100}
+          />
         ) : (
           <div className={styles.productIconPlaceholder}>
             {product.title.charAt(0)}
@@ -60,18 +72,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
             ))}
           </div>
         )}
-
-        {/* ボタン */}
-        <div className={styles.productLinks}>
-          <button
-            className={styles.detailButton}
-            onClick={() => onDetailClick(product.id)}
-          >
-            詳細へ
-          </button>
-        </div>
       </div>
-    </div>
+    </button>
   );
 };
 
