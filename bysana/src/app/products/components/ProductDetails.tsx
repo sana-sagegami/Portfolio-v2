@@ -78,6 +78,37 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
         <p className={styles.summaryText}>{product.keyPoints}</p>
       </section>
 
+      {/* Links Section */}
+      {(product.githubUrl || product.siteUrl) && (
+        <section className={styles.linksSection}>
+          <h2 className={styles.sectionTitle}>
+            <span>リンク</span>
+          </h2>
+          <div className={styles.linksList}>
+            {product.githubUrl && (
+              <a
+                href={product.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.link}
+              >
+                GitHub
+              </a>
+            )}
+            {product.siteUrl && (
+              <a
+                href={product.siteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.link}
+              >
+                {product.siteUrl}
+              </a>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* Screens Section */}
       <section className={styles.screensSection}>
         <h2 className={styles.sectionTitle}>
@@ -93,7 +124,9 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
                 product.id === "sleepGuard"
                   ? styles.verticalLayout
                   : ""
-              } ${screenGroup.images.length === 2 ? styles.twoColumns : ""} ${screenGroup.images.length === 1 ? styles.singleImage : ""}`}
+              } ${screenGroup.images.length === 2 ? styles.twoColumns : ""} ${
+                screenGroup.images.length === 1 ? styles.singleImage : ""
+              }`}
             >
               {screenGroup.images.map((screen, i) => (
                 <div key={i} className={styles.screenItem}>

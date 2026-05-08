@@ -1,0 +1,33 @@
+.socialContainer {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 4rem;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  color: #333;
+  transition: all 0.3s ease;
+  text-decoration: none;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    background: #efaba8;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}

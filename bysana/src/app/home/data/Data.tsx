@@ -2,7 +2,11 @@
 export const profileData = {
   nameJp: "提髪 沙奈",
   nameEn: "Sagegami Sana",
-  profileImage: "/assets/profile.png", // 実際の画像パス
+  profileImage: "/assets/profile.png",
+  socialLinks: [
+    { name: "x" as const, url: "https://x.com/san_01237" },
+    { name: "github" as const, url: "https://github.com/sana-sagegami" },
+  ],
 };
 
 export const detailsData = [
@@ -23,4 +27,3 @@ export const skillsData = [
   { name: "Swift", icon: "🍎", image: "/assets/skills/swift.png" },
   { name: "Figma", icon: "🎨", image: "/assets/skills/figma.png" },
 ];
-

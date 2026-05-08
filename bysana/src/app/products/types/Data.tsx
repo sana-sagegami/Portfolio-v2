@@ -87,7 +87,7 @@ const productDetailsData: Record<string, ProductDetailData> = {
       </>
     ),
     role: "フロントエンド",
-    url: "https://github.com/yohaku-space",
+    githubUrl: "https://github.com/yohaku-space",
     techStack: [
       ["React", "Next.js", "jotai", "tauri"],
       ["GO", "webSocket", "AWS", "Figma"],
@@ -129,7 +129,7 @@ const productDetailsData: Record<string, ProductDetailData> = {
       </>
     ),
     role: "フロントエンド/デザイン",
-    url: "https://github.com/nrak126/librarium",
+    githubUrl: "https://github.com/nrak126/librarium",
     techStack: [
       ["React", "Next.js", "supabase"],
       ["api routes", "Figma"],
@@ -266,7 +266,7 @@ const productDetailsData: Record<string, ProductDetailData> = {
         バックエンドはCloudflare Workersで構成し、ホストしています。
       </>
     ),
-    url: "https://alive.bysana.me",
+    siteUrl: "https://alive.bysana.me",
     techStack: [
       ["React", "Vite", "SCSS Modules"],
       ["Cloudflare Workers", "Cloudflare Pages", "Oura Ring API"],

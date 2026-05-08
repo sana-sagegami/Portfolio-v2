@@ -1,14 +1,15 @@
 "use client";
 
-import { JSX } from "react";
-import styles from "./HomePage.module.scss";
-import Details from "./details/Details";
-import Skills from "./skills/Skills";
-import { detailsData, profileData, skillsData } from "./data/Data";
-import Top from "./top/Top";
-import { useRouter } from "next/navigation";
 import ProductCard from "@/src/app/products/components/ProductCard";
 import { productsData } from "@/src/app/products/types/Data";
+import { useRouter } from "next/navigation";
+import { JSX } from "react";
+import styles from "./HomePage.module.scss";
+import { detailsData, profileData, skillsData } from "./data/Data";
+import Details from "./details/Details";
+import { SocialLinks } from "./icons/SocialLinks";
+import Skills from "./skills/Skills";
+import Top from "./top/Top";
 
 export default function HomePage(): JSX.Element {
   const router = useRouter();
@@ -34,6 +35,7 @@ export default function HomePage(): JSX.Element {
           profileImage={profileData.profileImage}
         />
         <Details details={detailsData} />
+        <SocialLinks links={profileData.socialLinks} />
         <Skills skills={skillsData} />
         <div className={styles.productsPreviewSection}>
           <div className={styles.productsPreviewFrame}>
@@ -50,7 +52,11 @@ export default function HomePage(): JSX.Element {
               ))}
             </div>
             <div className={styles.productsFrameFooter}>
-              <button type="button" className={styles.ProductsBtn} onClick={handleAllProducts}>
+              <button
+                type="button"
+                className={styles.ProductsBtn}
+                onClick={handleAllProducts}
+              >
                 <span>Products一覧を見る</span>
                 <span className={styles.ProductsBtnArrow}>→</span>
               </button>
