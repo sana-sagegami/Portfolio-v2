@@ -126,15 +126,25 @@
   }
 }
 
-@media (max-width: 640px) {
-  .productsPreviewGrid {
-    grid-template-columns: 1fr;
-  }
-}
-
 @media (max-width: 768px) {
   .aboutTitle {
     font-size: 3rem;
+  }
+
+  .productsPreviewSection {
+    padding: 2rem 0 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .productsPreviewGrid {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .productsPreviewGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
@@ -146,5 +156,15 @@
   .aboutTitle {
     font-size: 2.2rem;
     letter-spacing: 0.1em;
-	}
+  }
+
+  .productsPreviewSection {
+    padding: 1.5rem 0 1rem;
+    gap: 1.25rem;
+  }
+
+  .ProductsBtn {
+    font-size: 1.2rem;
+    min-height: 44px;
+  }
 }

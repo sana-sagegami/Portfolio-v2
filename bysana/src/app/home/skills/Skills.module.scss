@@ -3,6 +3,7 @@
   padding: 5rem 2rem;
   text-align: center;
   position: relative;
+  overflow: hidden;
 }
 
 .skillsTitle {
@@ -63,7 +64,7 @@
   height: 1px;
   top: 0;
   left: 0;
-  width: calc(100% + 3rem);
+  width: calc(100% + 10rem);
 }
 
 .borderRight {
@@ -77,14 +78,14 @@
   height: 1px;
   bottom: 0;
   right: 0;
-  width: calc(100% + 3rem);
+  width: calc(100% + 10rem);
 }
 
 .borderLeft {
   width: 1px;
   top: 0;
   left: 0;
-  height: calc(100% + 3rem);
+  height: calc(100% + 5rem);
 }
 
 .skillItem {
@@ -102,19 +103,45 @@
 }
 
 @media (max-width: 768px) {
+  .skillsSection {
+    padding: 3.5rem 1.5rem;
+  }
+
   .skillsGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    padding: 3rem 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    padding: 1.5rem;
   }
 
   .skillIcon {
-    width: 50px;
-    height: 50px;
+    width: 64px;
+    height: 64px;
+  }
+
+  .skillsTitle {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skillsSection {
+    padding: 3rem 1rem;
+  }
+
+  .skillsGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding: 1.25rem;
+  }
+
+  .skillIcon {
+    width: 56px;
+    height: 56px;
   }
 
   .skillsTitle {
     font-size: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 }

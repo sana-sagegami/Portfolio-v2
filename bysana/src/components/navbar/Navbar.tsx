@@ -36,8 +36,8 @@ export default function Navbar(): JSX.Element {
           >
             Products
           </button>
-          <span className={styles.navSeparator}>/</span>
-          <button
+          {/* <span className={styles.navSeparator}>/</span> */}
+          {/* <button
             type="button"
             onClick={() => handleNavigate("/blog")}
             className={`${styles.navLink} ${
@@ -45,7 +45,7 @@ export default function Navbar(): JSX.Element {
             }`}
           >
             Blog
-          </button>
+          </button> */}
         </div>
       </div>
     </nav>
