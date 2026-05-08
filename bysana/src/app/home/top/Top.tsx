@@ -51,8 +51,8 @@ const Top: React.FC<TopProps> = ({ nameJp, nameEn, profileImage }) => {
       <div className={styles.decorativeStars}>
         <Image
           src="/assets/design/starsingle_br.svg"
-          width={32}
-          height={35}
+          width={50}
+          height={60}
           className={`${styles.star} ${styles.star1}`}
           style={
             {
@@ -63,8 +63,8 @@ const Top: React.FC<TopProps> = ({ nameJp, nameEn, profileImage }) => {
         />
         <Image
           src="/assets/design/starsingle_br.svg"
-          width={22}
-          height={24}
+          width={50}
+          height={60}
           className={`${styles.star} ${styles.star2}`}
           style={
             {
@@ -75,8 +75,8 @@ const Top: React.FC<TopProps> = ({ nameJp, nameEn, profileImage }) => {
         />
         <Image
           src="/assets/design/starsingle_br.svg"
-          width={20}
-          height={22}
+          width={35}
+          height={30}
           className={`${styles.star} ${styles.star3}`}
           style={
             {
@@ -87,8 +87,8 @@ const Top: React.FC<TopProps> = ({ nameJp, nameEn, profileImage }) => {
         />
         <Image
           src="/assets/design/starsingle_br.svg"
-          width={24}
-          height={26}
+          width={35}
+          height={30}
           className={`${styles.star} ${styles.star4}`}
           style={
             {
@@ -105,7 +105,10 @@ const Top: React.FC<TopProps> = ({ nameJp, nameEn, profileImage }) => {
 
       {/* ABOUTME を円周に沿わせる */}
       <div className={styles.profileContainer}>
-        <div className={styles.profileImageBg} ref={profileRef}>
+        <div
+          className={`${styles.profileImageBg} ${styles.profileImageBgEnter}`}
+          ref={profileRef}
+        >
           <h1 className={styles.aboutTitle} aria-hidden>
             {["A", "B", "O", "U", "T", "M", "E"].map((letter, i) => (
               <span
@@ -118,7 +121,6 @@ const Top: React.FC<TopProps> = ({ nameJp, nameEn, profileImage }) => {
               </span>
             ))}
           </h1>
-
           <div className={styles.profileImageWrapper}>
             {profileImage ? (
               <Image
