@@ -7,10 +7,10 @@ export default async function ProductDetailPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  const product = productDetailsData[id as keyof typeof productDetailsData];
-  if (!product) {
+  const exists = id in productDetailsData;
+  if (!exists) {
     return <div>Product not found</div>;
   }
 
-  return <ProductDetailClient product={product} />;
+  return <ProductDetailClient productId={id} />;
 }

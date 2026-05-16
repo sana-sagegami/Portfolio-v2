@@ -125,8 +125,8 @@
 
 .profileTopBackground {
   position: absolute;
-  top: 15;
-  right: 0;
+  top: 0;
+  left: -5%;
   width: 110%;
   height: 100%;
   transform: rotate(-180deg);
@@ -254,11 +254,37 @@
     width: 260px;
     height: 320px;
   }
+
+  .decorativeStars .star {
+    &.star1 {
+      width: 32px;
+      height: 38px;
+      top: 30%;
+    }
+
+    &.star2 {
+      width: 32px;
+      height: 38px;
+      top: 28%;
+    }
+
+    &.star3 {
+      width: 22px;
+      height: 19px;
+      top: 62%;
+    }
+
+    &.star4 {
+      width: 22px;
+      height: 19px;
+      top: 60%;
+    }
+  }
 }
 
 @media (max-width: 480px) {
   .topSection {
-    padding: 3rem 1rem;
+    padding: 8rem 0 1.5rem;
   }
 
   .aboutTitle {
@@ -271,15 +297,46 @@
   }
 
   .profileImageWrapper {
-    width: 220px;
-    height: 280px;
+    width: 200px;
+    height: 250px;
+    margin-top: 3rem;
   }
 
   .profileNameJp {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .profileNameEn {
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+
+  .decorativeStars .star {
+    &.star1 {
+      width: 22px;
+      height: 26px;
+      top: 30%;
+      left: 10%;
+    }
+
+    &.star2 {
+      width: 22px;
+      height: 26px;
+      top: 28%;
+      right: 12%;
+    }
+
+    &.star3 {
+      width: 16px;
+      height: 15px;
+      top: 45%;
+      left: 20%;
+    }
+
+    &.star4 {
+      width: 15px;
+      height: 13px;
+      top: 43%;
+      right: 22%;
+    }
   }
 }

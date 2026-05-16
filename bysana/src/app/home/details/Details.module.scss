@@ -40,18 +40,54 @@
 }
 
 @media (max-width: 768px) {
+  .detailsSection {
+    padding: 3rem 1.5rem;
+  }
+
   .detailsGrid {
-    padding: 0 1rem;
+    padding: 0;
+    gap: 0;
   }
 
   .detailItem {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-    padding: 1.2rem 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    gap: 1rem;
+  }
+
+  .detailLabel {
+    font-size: 1rem;
+    min-width: 80px;
+    flex-shrink: 0;
   }
 
   .detailValue {
-    text-align: left;
+    font-size: 0.95rem;
+    text-align: right;
+  }
+}
+
+@media (max-width: 480px) {
+  .detailsSection {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .detailItem {
+    padding: 0.85rem 0;
+  }
+
+  .detailLabel {
+    font-size: 0.9rem;
+    min-width: 72px;
+    color: #888;
+    font-weight: 500;
+  }
+
+  .detailValue {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
   }
 }
