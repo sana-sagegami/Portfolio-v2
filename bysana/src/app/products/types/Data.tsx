@@ -16,8 +16,7 @@ const productsData = [
     id: "librarium",
     title: "Librarium",
     description:
-      "バーコードで書籍を読み取り、簡単に貸し借り。\n" +
-      "タグ付けや統計の相性診断などの機能を備えた書籍管理アプリ",
+      "バーコードで書籍を読み取り簡単に貸し借り。タグ付けや相性診断など機能を備えた書籍管理アプリ",
     icon: "/assets/products/libra.svg",
     awards: ["シスハック Nextend賞", "技育博出展"],
     color: "#d4a574",

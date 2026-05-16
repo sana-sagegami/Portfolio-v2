@@ -172,11 +172,6 @@
   .productDescription {
     font-size: 0.72rem;
     line-height: 1.5;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   .awardBadge {
@@ -226,8 +221,6 @@
 
   .productDescription {
     font-size: 0.5rem;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
   }
 
   .awardBadge {
