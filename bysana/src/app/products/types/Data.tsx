@@ -18,7 +18,7 @@ const productsData = [
     description:
       "バーコードで書籍を読み取り簡単に貸し借り。タグ付けや相性診断など機能を備えた書籍管理アプリ",
     icon: "/assets/products/libra.svg",
-    awards: ["シスハック Nextend賞", "技育博出展"],
+    awards: ["SysHack 2026 Nextend賞", "技育博出展"],
     color: "#d4a574",
   },
   {
@@ -52,6 +52,15 @@ const productsData = [
     icon: "/assets/products/alive.png",
     awards: ["個人制作"],
     color: "#E24B4A",
+  },
+  {
+    id: "kakureru",
+    title: "kakureru",
+    description:
+      "Wi-Fi電波強度・気圧・BLEで相手の位置情報を見ることができる、広い範囲で遊ぶ鬼ごっこ+かくれんぼアプリ",
+    icon: "/assets/products/kakureru_icon.png",
+    awards: ["研究室", "チーム制作"],
+    color: "#4A9C5D",
   },
 ];
 
@@ -285,6 +294,57 @@ const productDetailsData: Record<string, ProductDetailData> = {
       {
         title: "",
         images: ["/assets/alive/1.png"],
+      },
+    ],
+  },
+  kakureru: {
+    id: "kakureru",
+    logoText: "kakureru",
+    logoSvg: "/assets/products/kakureru_icon.png",
+    summary: (
+      <>
+        広い範囲で遊ぶ「鬼ごっこ + かくれんぼ」のスマートフォンアプリです。
+        <br />
+        GPSによる地図上の位置に加えて、Wi-Fiの電波強度や気圧、BLEを使い、
+        <br />
+        相手との距離感や上の階・下の階にいるかまでわかります。
+        <br />
+        ホストがルームを作成して範囲・時間・鬼を設定し、参加者は4桁コードで参加。
+        <br />
+        鬼放出後は鬼が逃走者を探し、捕まった逃走者は鬼になって鬼が増えていきます。
+        <br />
+        5分に1回全員が足元の写真を撮って共有するルールや、範囲外アラートも備えています。
+      </>
+    ),
+    githubUrl: "https://github.com/kajiLabTeam/kakureru",
+    techStack: [
+      ["Flutter", "Riverpod", "flutter_hooks", "Freezed"],
+      ["Firebase Realtime Database", "BLE", "Wi-Fi Scan", "GPS"],
+    ],
+    keyPoints: (
+      <>
+        近いか遠いかは「BSSIDごとのWi-Fi電波強度とその変化の共有」、
+        <br />
+        上の階か下の階かは「互いの気圧の差」、
+        <br />
+        終盤の確実な至近距離の判定は「BLEの捕捉」と、知りたい情報ごとに測位手段を使い分けました。
+        <br />
+        iOSには周辺Wi-Fiをスキャンする公開APIがないため、Androidに絞って実装しています。
+      </>
+    ),
+    screens: [
+      {
+        title: "",
+        images: [
+          "/assets/kakureru/1.jpg",
+          "/assets/kakureru/2.jpg",
+          "/assets/kakureru/3.jpg",
+          "/assets/kakureru/4.jpg",
+          "/assets/kakureru/5.jpg",
+          "/assets/kakureru/6.jpg",
+          "/assets/kakureru/7.jpg",
+          "/assets/kakureru/8.jpg",
+        ],
       },
     ],
   },
