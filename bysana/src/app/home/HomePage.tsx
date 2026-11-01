@@ -1,5 +1,7 @@
 "use client";
 
+import PostCard from "@/src/app/post/components/PostCard";
+import type { PostMeta } from "@/src/lib/posts";
 import ProductCard from "@/src/app/products/components/ProductCard";
 import { productsData } from "@/src/app/products/types/Data";
 import { useRouter } from "next/navigation";
@@ -11,7 +13,11 @@ import { SocialLinks } from "./icons/SocialLinks";
 import Skills from "./skills/Skills";
 import Top from "./top/Top";
 
-export default function HomePage(): JSX.Element {
+export default function HomePage({
+  latestPosts,
+}: {
+  latestPosts: PostMeta[];
+}): JSX.Element {
   const router = useRouter();
 
   const handleProductClick = (productId: string) => {
@@ -21,6 +27,11 @@ export default function HomePage(): JSX.Element {
 
   const handleAllProducts = () => {
     router.push("/products");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleAllPosts = () => {
+    router.push("/post");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -58,6 +69,34 @@ export default function HomePage(): JSX.Element {
                 onClick={handleAllProducts}
               >
                 <span>Products一覧を見る</span>
+                <span className={styles.ProductsBtnArrow}>→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className={styles.productsPreviewSection}>
+          <div className={styles.productsPreviewFrame}>
+            <div className={styles.productsFrameHeader}>
+              <span className={styles.productsFrameLabel}>Post</span>
+            </div>
+            {latestPosts.length === 0 ? (
+              <p style={{ textAlign: "center", color: "#999" }}>
+                まだ記事がありません。
+              </p>
+            ) : (
+              <div className={styles.productsPreviewGrid}>
+                {latestPosts.map((post) => (
+                  <PostCard key={post.slug} post={post} />
+                ))}
+              </div>
+            )}
+            <div className={styles.productsFrameFooter}>
+              <button
+                type="button"
+                className={styles.ProductsBtn}
+                onClick={handleAllPosts}
+              >
+                <span>Post一覧を見る</span>
                 <span className={styles.ProductsBtnArrow}>→</span>
               </button>
             </div>
