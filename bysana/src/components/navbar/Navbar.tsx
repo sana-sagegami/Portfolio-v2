@@ -36,16 +36,16 @@ export default function Navbar(): JSX.Element {
           >
             Products
           </button>
-          {/* <span className={styles.navSeparator}>/</span> */}
-          {/* <button
+          <span className={styles.navSeparator}>/</span>
+          <button
             type="button"
-            onClick={() => handleNavigate("/blog")}
+            onClick={() => handleNavigate("/post")}
             className={`${styles.navLink} ${
-              pathname?.startsWith("/blog") ? styles.active : ""
+              pathname?.startsWith("/post") ? styles.active : ""
             }`}
           >
-            Blog
-          </button> */}
+            Post
+          </button>
         </div>
       </div>
     </nav>

@@ -1,8 +1,11 @@
 ---
 title: はじめてのブログ
-date: "2026-04-30"
+date: '2026-04-30'
 description: ポートフォリオにブログ機能を追加しました。
-tags: ["雑記"]
+tags:
+  - 雑記
+published: false
+thumbnail: /uploads/d58043026d3d641c997b26b1.png
 ---
 
 ## ブログをはじめました
