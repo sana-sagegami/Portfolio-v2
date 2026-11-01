@@ -1,0 +1,6 @@
+title = "gitleaks config"
+
+# デフォルトの検出ルールを継承する。誤検知が出たらここのallowlistに
+# 「本物の秘密情報でないと確認したうえで」パス単位で追記する(ルールごと無効化しない)。
+[extend]
+useDefault = true
