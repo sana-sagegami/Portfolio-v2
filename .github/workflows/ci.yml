@@ -23,7 +23,7 @@ jobs:
         # Next.jsアプリはリポジトリ直下ではなく bysana/ にある。
         working-directory: bysana
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v4
         with:
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           # 履歴に紛れ込んだ秘密情報も見るため、全部取ってくる。
           fetch-depth: 0
