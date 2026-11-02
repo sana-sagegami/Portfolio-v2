@@ -147,6 +147,14 @@
     }
   }
 
+  // サイズ指定した小さい画像は横に並べる (幅が足りなければ折り返す)
+  figure:has(> img[width]) {
+    display: inline-block;
+    vertical-align: top;
+    max-width: 100%;
+    margin: 1rem 1rem 1rem 0;
+  }
+
   figcaption {
     margin-top: 0.6rem;
     font-size: 0.85rem;
