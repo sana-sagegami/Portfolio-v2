@@ -81,7 +81,12 @@ export async function getPostBySlug(slug: string, includeDrafts = false): Promis
   if (!src || (!src.published && !includeDrafts)) return null;
   const { content, ...meta } = src;
   const processed = await remark().use(html).process(content);
-  return { ...meta, contentHtml: processed.toString() };
+  // alt が空でない画像は <figure> + <figcaption> にして、画像の下に説明文を表示する
+  const contentHtml = processed.toString().replace(
+    /<p><img src="([^"]*)" alt="([^"]+)"([^>]*)><\/p>/g,
+    '<figure><img src="$1" alt="$2"$3><figcaption>$2</figcaption></figure>',
+  );
+  return { ...meta, contentHtml };
 }
 
 export function savePost(post: PostSource) {
