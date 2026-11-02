@@ -1,6 +1,6 @@
 "use client";
 
-import PostCard from "@/src/app/post/components/PostCard";
+import PostCard from "@/src/app/posts/components/PostCard";
 import type { PostMeta } from "@/src/lib/posts";
 import ProductCard from "@/src/app/products/components/ProductCard";
 import { productsData } from "@/src/app/products/types/Data";
@@ -31,7 +31,7 @@ export default function HomePage({
   };
 
   const handleAllPosts = () => {
-    router.push("/post");
+    router.push("/posts");
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 

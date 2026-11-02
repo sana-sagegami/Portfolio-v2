@@ -28,7 +28,7 @@ export default async function PostDetailPage({ params }: Props) {
   return (
     <main className={styles.postMain}>
       <div className={styles.postContainer}>
-        <Link href="/post" className={styles.backLink}>
+        <Link href="/posts" className={styles.backLink}>
           ← Post一覧へ
         </Link>
         {admin && (

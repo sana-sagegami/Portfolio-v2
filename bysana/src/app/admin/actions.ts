@@ -65,7 +65,7 @@ export async function save(_: string | null, formData: FormData) {
   });
   if (originalSlug && originalSlug !== slug && SLUG_RE.test(originalSlug)) deletePost(originalSlug);
 
-  revalidatePath("/post");
+  revalidatePath("/posts");
   redirect(adminBase());
 }
 
@@ -75,6 +75,6 @@ export async function remove(formData: FormData) {
   const thumb = getPostSource(slug)?.thumbnail;
   deletePost(slug);
   if (thumb) await removeImage(thumb);
-  revalidatePath("/post");
+  revalidatePath("/posts");
   redirect(adminBase());
 }

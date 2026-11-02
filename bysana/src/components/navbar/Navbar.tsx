@@ -39,9 +39,9 @@ export default function Navbar(): JSX.Element {
           <span className={styles.navSeparator}>/</span>
           <button
             type="button"
-            onClick={() => handleNavigate("/post")}
+            onClick={() => handleNavigate("/posts")}
             className={`${styles.navLink} ${
-              pathname?.startsWith("/post") ? styles.active : ""
+              pathname?.startsWith("/posts") ? styles.active : ""
             }`}
           >
             Post
