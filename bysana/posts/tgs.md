@@ -5,6 +5,7 @@ description: 大学一年生の時に東京ゲームショウにゲームを出�
 tags:
   - 制作
 published: true
+thumbnail: 'https://img.bysana.me/post-thumbnails/d1ba2f8a34cbf948f03fd857.jpg'
 ---
 ## 作ったゲーム
 
