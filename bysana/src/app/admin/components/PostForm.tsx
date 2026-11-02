@@ -1,8 +1,8 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useRef, useState } from "react";
 import Link from "next/link";
-import { save } from "../actions";
+import { save, uploadBodyImage } from "../actions";
 import type { PostSource } from "@/src/lib/posts";
 import TagPicker from "./TagPicker";
 import styles from "../admin.module.scss";
@@ -10,7 +10,25 @@ import styles from "../admin.module.scss";
 export default function PostForm({ post, base, tagOptions }: { post?: PostSource; base: string; tagOptions: string[] }) {
   const [error, action, pending] = useActionState(save, null);
   const [preview, setPreview] = useState<string | null>(null);
+  const [imgMsg, setImgMsg] = useState<string | null>(null);
+  const contentRef = useRef<HTMLTextAreaElement>(null);
   const today = new Date().toISOString().slice(0, 10);
+
+  async function insertImage(file: File) {
+    setImgMsg("アップロード中...");
+    const fd = new FormData();
+    fd.set("image", file);
+    const res = await uploadBodyImage(fd);
+    if (!res.url) return setImgMsg(res.error ?? "失敗しました");
+    const ta = contentRef.current;
+    if (ta) {
+      const md = `\n![ここに画像の説明](${res.url})\n`;
+      const pos = ta.selectionStart ?? ta.value.length;
+      ta.setRangeText(md, pos, ta.selectionEnd ?? pos, "end");
+      ta.focus();
+    }
+    setImgMsg("挿入しました");
+  }
 
   return (
     <form action={action} className={styles.form}>
@@ -55,8 +73,24 @@ export default function PostForm({ post, base, tagOptions }: { post?: PostSource
       </div>
       <TagPicker options={tagOptions} initial={post?.tags ?? []} />
       <label className={styles.label}>本文 (Markdown)
-        <textarea name="content" defaultValue={post?.content} rows={18} className={styles.textarea} />
+        <textarea ref={contentRef} name="content" defaultValue={post?.content} rows={18} className={styles.textarea} />
       </label>
+      <div className={styles.label}>
+        <label className={styles.fileBtn}>
+          本文に画像を挿入 (カーソル位置 / 5MBまで。[ ]内の文章が画像の下に表示されます)
+          <input
+            type="file"
+            accept="image/jpeg,image/png,image/webp,image/gif"
+            className={styles.fileInput}
+            onChange={async (e) => {
+              const f = e.target.files?.[0];
+              e.target.value = "";
+              if (f) await insertImage(f);
+            }}
+          />
+        </label>
+        {imgMsg && <span>{imgMsg}</span>}
+      </div>
       <label className={styles.check}>
         <input type="checkbox" name="published" defaultChecked={post?.published ?? false} />
         公開する (オフ = 下書き。自分だけに見えます)

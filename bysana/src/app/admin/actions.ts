@@ -69,12 +69,25 @@ export async function save(_: string | null, formData: FormData) {
   redirect(adminBase());
 }
 
+export async function uploadBodyImage(formData: FormData): Promise<{ url?: string; error?: string }> {
+  if (!(await isAdmin())) return { error: "ログインが必要です" };
+  const file = formData.get("image");
+  if (!(file instanceof File) || file.size === 0) return { error: "画像を選択してください" };
+  try {
+    return { url: await storeImage(file) };
+  } catch (e) {
+    return { error: e instanceof Error ? e.message : "画像の保存に失敗しました" };
+  }
+}
+
 export async function remove(formData: FormData) {
   if (!(await isAdmin())) redirect(`${adminBase()}/login`);
   const slug = String(formData.get("slug") ?? "");
-  const thumb = getPostSource(slug)?.thumbnail;
+  const src = getPostSource(slug);
   deletePost(slug);
-  if (thumb) await removeImage(thumb);
+  if (src?.thumbnail) await removeImage(src.thumbnail);
+  // 本文中の画像も削除 (removeImage は自分の保存先以外は触らない)
+  for (const m of (src?.content ?? "").matchAll(/!\[[^\]]*\]\(\s*([^)\s]+)/g)) await removeImage(m[1]);
   revalidatePath("/posts");
   redirect(adminBase());
 }
