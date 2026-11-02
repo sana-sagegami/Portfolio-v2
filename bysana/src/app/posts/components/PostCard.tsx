@@ -2,10 +2,10 @@ import Link from "next/link";
 import type { PostMeta } from "@/src/lib/posts";
 import styles from "../page.module.scss";
 
-// 窓型(アーチ)カード。/post と ホームで共通
+// 窓型(アーチ)カード。/posts と ホームで共通
 export default function PostCard({ post }: { post: PostMeta }) {
   return (
-    <Link href={`/post/${post.slug}`} className={styles.windowCard}>
+    <Link href={`/posts/${post.slug}`} className={styles.windowCard}>
       {!post.published && <span className={styles.draft}>下書き</span>}
       <div className={styles.arch}>
         {post.thumbnail && (

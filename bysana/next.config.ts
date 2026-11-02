@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
     // 管理画面からの画像アップロード(5MB)を通すため
     serverActions: { bodySizeLimit: "6mb" },
   },
+  async redirects() {
+    return [
+      { source: "/post", destination: "/posts", permanent: true },
+      { source: "/post/:path*", destination: "/posts/:path*", permanent: true },
+    ];
+  },
 };
 
 export default nextConfig;
