@@ -1,5 +1,5 @@
 .blogMain {
-  margin-top: 100px;
+  margin-top: 50px; // Products と同じ高さ
   min-height: 100vh;
   background: #fffaf7;
   padding: 5rem 2rem;
@@ -49,7 +49,8 @@
   height: 100%;
   text-decoration: none;
   color: inherit;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, #fdeceb 100%);
+  background: rgba(255, 255, 255, 0.8); // Products のカードと同じ白
+  backdrop-filter: blur(10px);
   border-radius: 10rem 10rem 1.8rem 1.8rem;
   border: 1px solid rgba(255, 255, 255, 0.7);
   box-shadow: 0 10px 30px rgba(239, 153, 149, 0.12);
@@ -177,42 +178,42 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     max-width: 100%;
     gap: 1.2rem 0.8rem;
+  }
 
-    // /posts 一覧のみ小さめに(ホームのカードには影響させない)
-    .windowCard {
-      padding: 0.4rem 0.4rem 0.6rem;
-    }
+  // カードを小さめに (/posts とホームで共通)
+  .windowCard {
+    padding: 0.4rem 0.4rem 0.6rem;
+  }
 
-    .arch {
-      aspect-ratio: 4 / 3;
-      padding-bottom: 0.4rem;
-    }
+  .arch {
+    aspect-ratio: 4 / 3;
+    padding-bottom: 0.4rem;
+  }
 
-    .cardBody {
-      padding: 0.5rem 0.2rem 0;
-      gap: 0.25rem;
-    }
+  .cardBody {
+    padding: 0.5rem 0.2rem 0;
+    gap: 0.25rem;
+  }
 
-    .postTitle {
-      font-size: 0.9rem;
-    }
+  .postTitle {
+    font-size: 0.9rem;
+  }
 
-    .postDescription {
-      font-size: 0.68rem;
-      line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
+  .postDescription {
+    font-size: 0.68rem;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 
-    .postDate {
-      font-size: 0.65rem;
-    }
+  .postDate {
+    font-size: 0.65rem;
+  }
 
-    .tag {
-      font-size: 0.58rem;
-      padding: 0.2rem 0.5rem;
-    }
+  .tag {
+    font-size: 0.58rem;
+    padding: 0.2rem 0.5rem;
   }
 }

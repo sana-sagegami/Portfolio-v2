@@ -132,10 +132,29 @@
     text-decoration: underline;
   }
 
+  // サイズ指定した小さい画像は中央で横に並べる (幅が足りなければ折り返す)
+  // 他の要素は 100% 幅にして、通常どおり縦に積む
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 1rem;
+
+  > * {
+    flex: 0 0 100%;
+    min-width: 0;
+  }
+
+  > figure:has(> img[width]) {
+    flex: 0 0 auto;
+    max-width: 100%;
+  }
+
+  // 画像は PC・スマホともに中央寄せ
   img {
+    display: block;
     max-width: 100%;
     border-radius: 0.8rem;
-    margin: 1.5rem 0;
+    margin: 1.5rem auto;
   }
 
   figure {
@@ -143,16 +162,8 @@
     text-align: center;
 
     img {
-      margin: 0;
+      margin: 0 auto;
     }
-  }
-
-  // サイズ指定した小さい画像は横に並べる (幅が足りなければ折り返す)
-  figure:has(> img[width]) {
-    display: inline-block;
-    vertical-align: top;
-    max-width: 100%;
-    margin: 1rem 1rem 1rem 0;
   }
 
   figcaption {
