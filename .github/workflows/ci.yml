@@ -1,0 +1,62 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# 同じブランチへ続けてpushしたとき、古い実行を止める。
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        # Next.jsアプリはリポジトリ直下ではなく bysana/ にある。
+        working-directory: bysana
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: bysana/package-lock.json
+
+      - run: npm ci
+
+      - name: lint
+        run: npm run lint
+
+      - name: 型チェック
+        run: npx tsc --noEmit
+
+      - name: build
+        # ビルド時に必要な環境変数は無い(process.env は実行時にのみ参照)。
+        # 本物の秘密情報はCIに渡さない。
+        run: npm run build
+
+  secret-scan:
+    name: secret-scan
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # 履歴に紛れ込んだ秘密情報も見るため、全部取ってくる。
+          fetch-depth: 0
+
+      # `--redact` で検出した値そのものはログに出さない。
+      - name: gitleaks
+        run: |
+          docker run --rm -v "$GITHUB_WORKSPACE:/repo:ro" \
+            ghcr.io/gitleaks/gitleaks:v8.30.1 \
+            detect --source /repo --config /repo/bysana/.gitleaks.toml --redact -v

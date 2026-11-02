@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  # リポジトリ直下には bysana/ だけがあるので、アプリ部分だけを配置する。
+  - source: /bysana
+    destination: /home/sana/bysana
+hooks:
+  ApplicationStart:
+    # location はリポジトリ直下からの相対パス。
+    - location: bysana/scripts/start_docker.sh
+      timeout: 600
+      runas: sana
