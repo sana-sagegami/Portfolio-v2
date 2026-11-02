@@ -27,6 +27,26 @@
   }
 }
 
+.awards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 1.2rem auto 0;
+}
+
+.awardBadge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  background: #ef9995;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 600;
+  border-radius: 1rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3);
+}
+
 .logoImageWrap {
   position: relative;
   width: 200px;

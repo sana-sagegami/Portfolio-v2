@@ -1,4 +1,5 @@
 import { ProductDetailData } from "../types/domin/ProductDetailData";
+import { productsData } from "../types/Data";
 import styles from "./ProductDetails.module.scss";
 
 interface ProductDetailProps {
@@ -11,6 +12,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
   onBack,
 }) => {
   const isYohaku = product.id === "yohaku";
+  const awards = productsData.find((p) => p.id === product.id)?.awards ?? [];
 
   return (
     <main className={styles.detailMain}>
@@ -44,6 +46,15 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({
           <span>概要</span>
         </h2>
         <p className={styles.summaryText}>{product.summary}</p>
+        {awards.length > 0 && (
+          <div className={styles.awards}>
+            {awards.map((award, index) => (
+              <span key={index} className={styles.awardBadge}>
+                #{award}
+              </span>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Role Section */}
