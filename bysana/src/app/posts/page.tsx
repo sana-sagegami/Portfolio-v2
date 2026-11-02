@@ -6,7 +6,7 @@ import PostCard from "./components/PostCard";
 import styles from "./page.module.scss";
 
 export const metadata = {
-  title: "Post | Sana's Portfolio",
+  title: "Posts | Sana's Portfolio",
 };
 
 // 記事は実行時に追加されるので毎回読み込む
@@ -19,7 +19,7 @@ export default async function PostPage() {
   return (
     <main className={styles.blogMain}>
       <div className={styles.blogHeader}>
-        <h1 className={styles.blogTitle}>Post</h1>
+        <h1 className={styles.blogTitle}>Posts</h1>
         {admin && (
           <Link href={adminBase()} className={styles.adminLink}>
             ✎ 記事を書く

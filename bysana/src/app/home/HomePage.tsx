@@ -77,7 +77,7 @@ export default function HomePage({
         <div className={styles.productsPreviewSection}>
           <div className={styles.productsPreviewFrame}>
             <div className={styles.productsFrameHeader}>
-              <span className={styles.productsFrameLabel}>Post</span>
+              <span className={styles.productsFrameLabel}>Posts</span>
             </div>
             {latestPosts.length === 0 ? (
               <p style={{ textAlign: "center", color: "#999" }}>

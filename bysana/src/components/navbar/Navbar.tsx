@@ -44,7 +44,7 @@ export default function Navbar(): JSX.Element {
               pathname?.startsWith("/posts") ? styles.active : ""
             }`}
           >
-            Post
+            Posts
           </button>
         </div>
       </div>
