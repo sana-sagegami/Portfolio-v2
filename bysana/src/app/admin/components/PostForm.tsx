@@ -1,11 +1,13 @@
 "use client";
 
-import { useActionState, useRef, useState } from "react";
+import { useActionState, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { save, uploadBodyImage } from "../actions";
 import type { PostSource } from "@/src/lib/posts";
 import TagPicker from "./TagPicker";
+import { renderMarkdown } from "@/src/lib/markdown";
 import styles from "../admin.module.scss";
+import postStyles from "../../posts/[slug]/page.module.scss";
 
 export default function PostForm({ post, base, tagOptions }: { post?: PostSource; base: string; tagOptions: string[] }) {
   const [error, action, pending] = useActionState(save, null);
@@ -14,19 +16,26 @@ export default function PostForm({ post, base, tagOptions }: { post?: PostSource
   const contentRef = useRef<HTMLTextAreaElement>(null);
   const today = new Date().toISOString().slice(0, 10);
 
-  async function insertImage(file: File) {
+  const [content, setContent] = useState(post?.content ?? "");
+  const previewHtml = useMemo(() => renderMarkdown(content), [content]);
+
+  // 画像を順にアップロードして、カーソル位置に Markdown を挿入する
+  async function insertImages(files: File[]) {
+    const images = files.filter((f) => f.type.startsWith("image/"));
+    if (images.length === 0) return;
     setImgMsg("アップロード中...");
-    const fd = new FormData();
-    fd.set("image", file);
-    const res = await uploadBodyImage(fd);
-    if (!res.url) return setImgMsg(res.error ?? "失敗しました");
-    const ta = contentRef.current;
-    if (ta) {
-      const md = `\n![ここに画像の説明](${res.url})\n`;
+    for (const file of images) {
+      const fd = new FormData();
+      fd.set("image", file);
+      const res = await uploadBodyImage(fd);
+      if (!res.url) return setImgMsg(res.error ?? "失敗しました");
+      const ta = contentRef.current;
+      if (!ta) return;
       const pos = ta.selectionStart ?? ta.value.length;
-      ta.setRangeText(md, pos, ta.selectionEnd ?? pos, "end");
-      ta.focus();
+      ta.setRangeText(`\n![ここに画像の説明](${res.url})\n`, pos, ta.selectionEnd ?? pos, "end");
+      setContent(ta.value);
     }
+    contentRef.current?.focus();
     setImgMsg("挿入しました");
   }
 
@@ -72,24 +81,54 @@ export default function PostForm({ post, base, tagOptions }: { post?: PostSource
         )}
       </div>
       <TagPicker options={tagOptions} initial={post?.tags ?? []} />
-      <label className={styles.label}>本文 (Markdown)
-        <textarea ref={contentRef} name="content" defaultValue={post?.content} rows={18} className={styles.textarea} />
-      </label>
-      <div className={styles.label}>
-        <label className={styles.fileBtn}>
-          本文に画像を挿入 (カーソル位置 / 5MBまで。[ ]内の文章が画像の下に表示されます)
-          <input
-            type="file"
-            accept="image/jpeg,image/png,image/webp,image/gif"
-            className={styles.fileInput}
-            onChange={async (e) => {
-              const f = e.target.files?.[0];
-              e.target.value = "";
-              if (f) await insertImage(f);
+      <div className={`${styles.label} ${styles.editorSplit}`}>
+        <div className={styles.editorPane}>
+          本文 (Markdown) — 画像はドラッグ&ドロップ / ペーストでも挿入できます。サイズ指定: ![説明](URL =300x) (幅300px) / =300x200 (幅x高さ)
+          <textarea
+            ref={contentRef}
+            name="content"
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            onPaste={(e) => {
+              const files = Array.from(e.clipboardData.files);
+              if (files.some((f) => f.type.startsWith("image/"))) {
+                e.preventDefault();
+                void insertImages(files);
+              }
             }}
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={(e) => {
+              const files = Array.from(e.dataTransfer.files);
+              if (files.some((f) => f.type.startsWith("image/"))) {
+                e.preventDefault();
+                void insertImages(files);
+              }
+            }}
+            rows={24}
+            className={styles.textarea}
           />
-        </label>
-        {imgMsg && <span>{imgMsg}</span>}
+          <label className={styles.fileBtn}>
+            画像を選んで挿入 (5MBまで)
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/webp,image/gif"
+              multiple
+              className={styles.fileInput}
+              onChange={async (e) => {
+                const files = Array.from(e.target.files ?? []);
+                e.target.value = "";
+                await insertImages(files);
+              }}
+            />
+          </label>
+          {imgMsg && <span>{imgMsg}</span>}
+        </div>
+        <div className={styles.editorPane}>
+          プレビュー
+          <div className={styles.previewBox}>
+            <div className={postStyles.postContent} dangerouslySetInnerHTML={{ __html: previewHtml }} />
+          </div>
+        </div>
       </div>
       <label className={styles.check}>
         <input type="checkbox" name="published" defaultChecked={post?.published ?? false} />
