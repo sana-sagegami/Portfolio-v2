@@ -7,6 +7,7 @@ import { adminBase } from "@/src/lib/adminPath";
 import { storeImage, removeImage } from "@/src/lib/storage";
 import { isLocked, recordFail, reset } from "@/src/lib/loginThrottle";
 import { SLUG_RE, savePost, deletePost, getPostSource, } from "@/src/lib/posts";
+import { commitPost, deletePostCommit } from "@/src/lib/github";
 
 export async function login(_: string | null, formData: FormData) {
   if (isLocked()) return "試行回数が多すぎます。しばらくしてからやり直してください";
@@ -50,7 +51,7 @@ export async function save(_: string | null, formData: FormData) {
   }
   if (old && old !== thumbnail) await removeImage(old);
 
-  savePost({
+  const body = savePost({
     thumbnail,
     slug,
     title,
@@ -63,7 +64,18 @@ export async function save(_: string | null, formData: FormData) {
     published: formData.get("published") === "on",
     content: String(formData.get("content") ?? ""),
   });
-  if (originalSlug && originalSlug !== slug && SLUG_RE.test(originalSlug)) deletePost(originalSlug);
+  const renamed = originalSlug && originalSlug !== slug && SLUG_RE.test(originalSlug);
+  if (renamed) deletePost(originalSlug);
+
+  // GitHub に自動コミット (GITHUB_TOKEN 未設定なら何もしない)
+  try {
+    await commitPost(slug, body, `post: ${originalSlug ? "update" : "add"} ${slug}`);
+    if (renamed) await deletePostCommit(originalSlug, `post: rename ${originalSlug} -> ${slug}`);
+  } catch (e) {
+    revalidatePath("/posts");
+    console.error("GitHub commit failed", e);
+    return `保存はできましたが、GitHubへの反映に失敗しました: ${e instanceof Error ? e.message : ""}`;
+  }
 
   revalidatePath("/posts");
   redirect(adminBase());
@@ -85,6 +97,11 @@ export async function remove(formData: FormData) {
   const slug = String(formData.get("slug") ?? "");
   const src = getPostSource(slug);
   deletePost(slug);
+  try {
+    await deletePostCommit(slug, `post: delete ${slug}`);
+  } catch (e) {
+    console.error("GitHub delete commit failed", e);
+  }
   if (src?.thumbnail) await removeImage(src.thumbnail);
   // 本文中の画像も削除 (removeImage は自分の保存先以外は触らない)
   for (const m of (src?.content ?? "").matchAll(/!\[[^\]]*\]\(\s*([^)\s]+)/g)) await removeImage(m[1]);
