@@ -36,11 +36,11 @@ gh pr list --state open   # 長期間放置されているPR
 
 - **コミットSHA/digestで固定しているCI依存の陳腐化**: `.github/workflows/*.yml` の `uses:` がコミットSHA固定の場合、Dependabotが更新PRを出すので通常はここでの手作業は不要。ただし `run:` 内でdocker imageをdigest固定している場合（例: `secret-scan.yml` の gitleaks）はDependabotの追従対象外なので、ここで手動確認する。最新版は `gh api repos/<owner>/<repo>/releases/latest --jq .tag_name` 等で調べ、大きく遅れていれば更新を提案する（バージョンを上げるだけでなく、コメントに残した旧digestとの差分を確認し、新digestに固定し直す）。
   - **更新前にライセンスが変わっていないかを確認する**: `gh api repos/<owner>/<repo>/license --jq .license.spdx_id` がこれまでと違う値（`MIT` 等の一般的なOSSライセンスから、`NOASSERTION` や独自ライセンスへ）になっていたら、無料利用に条件が付いた可能性がある。実例として `gitleaks-action`（gitleaks CLIとは別リポジトリ）はv2.0.0でMITから独自ライセンスに変わり、Organizationでの利用にライセンスキー登録を要求するようになった。ライセンスが変わっている場合は**その場で固定し直さず**、「新しいバージョンは利用条件が変わっている可能性がある」とユーザーに伝えて判断を仰ぐ——バージョンを上げる/上げないは技術的な当たり外れの問題ではなく、登録や費用が発生しうる意思決定なので、エンジニアが常駐しないチームでは特に無自覚な追従を避ける
-- 依存の脆弱性: `npm audit`（リポジトリ直下で実行）。`next` / `react` のバージョンが大きく遅れていないかも `npm outdated next react react-dom` で見る
+- 依存の脆弱性: `pnpm audit`（リポジトリ直下で実行）。`next` / `react` のバージョンが大きく遅れていないかも `pnpm outdated next react react-dom` で見る
 - 未コミットの変更が残っていないか（`git status`）。数日前の作業が放置されている場合、次の作業と混ざる事故のもとになる
 - リモートに対して未pushのコミットが溜まっていないか（`git log @{u}..` が使えれば）
 - マージ済み・長期間更新のないローカルブランチ（`git branch --merged` 等。**削除はこのスキルでは行わず**、報告だけにとどめる。整理したい場合は `/clean_gone` を案内する）
-- `npm run lint` と `npx tsc --noEmit`、可能なら `npm run build`（リポジトリ直下）。「今この瞬間、手元のコードは健康か」の基本線。mainへのpushは即デプロイなので、ビルドが通ることは特に重要
+- `pnpm lint` と `pnpm exec tsc --noEmit`、可能なら `pnpm build`（リポジトリ直下）。「今この瞬間、手元のコードは健康か」の基本線。mainへのpushは即デプロイなので、ビルドが通ることは特に重要
 
 ## Step 3: 優先度を付けて報告する
 

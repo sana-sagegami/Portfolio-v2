@@ -21,24 +21,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-          cache-dependency-path: package-lock.json
+          cache: pnpm
 
-      - run: npm ci
+      - run: pnpm install --frozen-lockfile
 
       - name: lint
-        run: npm run lint
+        run: pnpm lint
 
       - name: 型チェック
-        run: npx tsc --noEmit
+        run: pnpm exec tsc --noEmit
 
       - name: build
         # ビルド時に必要な環境変数は無い(process.env は実行時にのみ参照)。
         # 本物の秘密情報はCIに渡さない。
-        run: npm run build
+        run: pnpm build
 
   secret-scan:
     name: secret-scan

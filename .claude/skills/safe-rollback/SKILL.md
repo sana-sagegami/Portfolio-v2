@@ -73,7 +73,7 @@ git stash pop など必要に応じて元に戻す
 
 - 最速の切り戻しは、壊れたコミットを `git revert` して通常の `git push`（4-C）。pushがそのまま再デプロイのトリガーになる
 - AWSコンソールの CodeDeploy → デプロイ履歴から、直前に成功したリビジョンを再デプロイする手もある。コードを触らず戻せるが、**次にmainへpushしたとき壊れたコードが再び出る**ので、後でrevertも必ず行う
-- 反映後は `next build` が通るか（`npm run build`）と本番URLの表示を確認する
+- 反映後は `next build` が通るか（`pnpm build`）と本番URLの表示を確認する
 
 ### 4-E: DBマイグレーションを戻す
 
