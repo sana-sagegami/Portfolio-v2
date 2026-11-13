@@ -11,6 +11,9 @@ docker build -t my-portfolio-image .
 # 記事の保存先(永続化)と管理者パスワードの設定ファイル
 # サーバー上に /home/sana/portfolio-data/.env を作り、ADMIN_PASSWORD=... / ADMIN_PATH=推測されにくい文字列 / SESSION_SECRET=... を書いておく
 mkdir -p /home/sana/portfolio-data/posts
+# GitHub 上の記事(管理画面から自動コミットされたもの)を保存先にコピーする。
+# 上書きのみで削除はしない(削除は管理画面側で済んでいるため)。
+cp -f /home/sana/bysana/posts/*.md /home/sana/portfolio-data/posts/ 2>/dev/null || true
 docker run -d --restart always -p 3000:3000 \
   -v /home/sana/portfolio-data/posts:/data/posts \
   -e POSTS_DIR=/data/posts \
