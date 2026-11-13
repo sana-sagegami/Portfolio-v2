@@ -18,10 +18,6 @@ jobs:
     name: check
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    defaults:
-      run:
-        # Next.jsアプリはリポジトリ直下ではなく bysana/ にある。
-        working-directory: bysana
     steps:
       - uses: actions/checkout@v4
 
@@ -29,7 +25,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: bysana/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - run: npm ci
 
@@ -59,4 +55,4 @@ jobs:
         run: |
           docker run --rm -v "$GITHUB_WORKSPACE:/repo:ro" \
             ghcr.io/gitleaks/gitleaks:v8.30.1 \
-            detect --source /repo --config /repo/bysana/.gitleaks.toml --redact -v
+            detect --source /repo --config /repo/.gitleaks.toml --redact -v

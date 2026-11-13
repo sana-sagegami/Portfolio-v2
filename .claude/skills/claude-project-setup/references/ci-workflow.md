@@ -10,7 +10,7 @@ claude-project-setupスキルのStep 3（GitHub利用時）で `.github/workflow
 
 ## Next.js
 
-`bysana/` がリポジトリ直下ではなく**サブディレクトリ**にある点に注意（`working-directory` を指定する）。パッケージマネージャは Step 1 で確定したものに合わせる（下記は npm の例。pnpm なら `pnpm/action-setup` と `pnpm install --frozen-lockfile` に読み替える）。
+アプリはリポジトリ直下にある（サブディレクトリに置く場合は `working-directory` を指定する）。パッケージマネージャは Step 1 で確定したものに合わせる（下記は npm の例。pnpm なら `pnpm/action-setup` と `pnpm install --frozen-lockfile` に読み替える）。
 
 ```yaml
 name: CI
@@ -21,16 +21,13 @@ on:
 jobs:
   check:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: bysana
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: bysana/package-lock.json
+          cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npm run lint
       - run: npx tsc --noEmit
@@ -69,13 +66,13 @@ jobs:
 
 ## Dependabot（`.github/dependabot.yml`）
 
-リポジトリ直下ではなく `bysana/` に `package.json` があるので `directory` を合わせる。
+`package.json` の場所に `directory` を合わせる（このリポジトリは直下）。
 
 ```yaml
 version: 2
 updates:
   - package-ecosystem: npm
-    directory: /bysana
+    directory: /
     schedule:
       interval: weekly
   - package-ecosystem: github-actions

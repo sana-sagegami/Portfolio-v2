@@ -5,7 +5,7 @@
 //   GITHUB_TOKEN       … Fine-grained token (このリポジトリだけ / Contents: Read and write)
 //   GITHUB_REPO        … 例: sana-sagegami/portfolio-v2
 //   GITHUB_BRANCH      … 省略時 main
-//   GITHUB_POSTS_PATH  … 省略時 bysana/posts
+//   GITHUB_POSTS_PATH  … 省略時 posts
 
 const API = "https://api.github.com";
 
@@ -17,7 +17,7 @@ function cfg() {
     token,
     repo,
     branch: process.env.GITHUB_BRANCH || "main",
-    dir: (process.env.GITHUB_POSTS_PATH || "bysana/posts").replace(/^\/+|\/+$/g, ""),
+    dir: (process.env.GITHUB_POSTS_PATH || "posts").replace(/^\/+|\/+$/g, ""),
   };
 }
 
