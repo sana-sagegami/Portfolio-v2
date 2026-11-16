@@ -4,6 +4,11 @@ on:
   pull_request:
   push:
     branches: [main]
+    # 記事(posts/)だけの変更では CI を動かさない。
+    # → 自宅サーバーへのデプロイ(CIの成功が条件)も起きない(CodeDeploy 1回約3円を節約)。
+    # 自宅サーバーは管理画面で保存した時点で反映済み、Vercel は自分でビルドするので問題なし。
+    paths-ignore:
+      - "posts/**"
 
 # 同じブランチへ続けてpushしたとき、古い実行を止める。
 concurrency:
