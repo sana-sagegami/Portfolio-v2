@@ -18,6 +18,14 @@ html {
   background: #fffaf7;
 }
 
+/* パソコン表示は全体を75%の大きさで表示する(引きの見た目)。
+   スマホ(768px以下)は今までどおり。 */
+@media (min-width: 769px) {
+  html {
+    zoom: 0.75;
+  }
+}
+
 body {
   font-family: "Noto Sans JP", sans-serif;
   background: #fffaf7;
