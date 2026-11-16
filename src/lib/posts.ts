@@ -83,7 +83,7 @@ export async function getPostBySlug(slug: string, includeDrafts = false): Promis
   return { ...meta, contentHtml };
 }
 
-export function savePost(post: PostSource) {
+export function savePost(post: PostSource): string {
   ensurePostsDir();
   const { slug, content, ...meta } = post;
   const front: Record<string, unknown> = {
@@ -96,6 +96,7 @@ export function savePost(post: PostSource) {
   if (meta.thumbnail) front.thumbnail = meta.thumbnail;
   const body = matter.stringify(content, front);
   fs.writeFileSync(filePath(slug), body, "utf8");
+  return body;
 }
 
 export function deletePost(slug: string) {
